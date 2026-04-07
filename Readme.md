@@ -1,5 +1,5 @@
 <div align= "center">
-    <h1 align="center"><i>One Battle After Another:</i><br> Probing LLMs' Limits of Multi-Turn Instruction Following with an Evolving Benchmark</h1>
+    <h1 align="center"><i> [ACL2026] One Battle After Another:</i><br> Probing LLMs' Limits of Multi-Turn Instruction Following with an Evolving Benchmark</h1>
 </div>
 
 
