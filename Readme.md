@@ -8,9 +8,8 @@
 <div align= "center">
 <p>
 <a href="https://arxiv.org/abs/2511.03508v2">📖 Arxiv</a> |
-<!-- <a href="https://huggingface.co/datasets/ASCIIEval/ASCIIEval">🤗 ASCIIEval Dataset</a> |
-<a href="https://huggingface.co/datasets/ASCIIEval/ASCIITune">🤗 ASCIITune Dataset</a>
- <a href="https://asciieval.github.io/">🌐 Website</a> -->
+<a href="https://github.com/JiaQiSJTU/EvolIF">🛠️ Code</a> |
+<a href="https://huggingface.co/datasets/KikiNLP/EvolIF">🤗 EvolIF Dataset</a>
 </p>
 </div>
 
@@ -97,7 +96,28 @@ You can add new constraints under `src/instruction/`. **Each constraint correspo
 
 ## Data
 
-Please stay tuned for the upcoming release of the test data and evaluation results.
+<!-- Please stay tuned for the upcoming release of the test data and evaluation results. -->
+
+EvolIF is the general-domain realization of the framework. Each file in `dialog_v0.1` is in JSON Lines (`.jsonl`) format, with one JSON object per line. Each line corresponds to one conversational turn in an evolving, multi-topic dialogue.
+
+### Record Format
+
+Each line in the released files contains a single turn-level record with the following top-level fields:
+
+- `turn`: Turn index within the dialogue.
+- `active_topic`: Integer identifier of the topic active at the current turn.
+- `user_query`: Raw user utterance produced by the query-synthesis pipeline.
+- `user_query_verified`: Verified user utterance.
+- `instructions`: List of structured constraints that should be satisfied by the model response at this turn. Each element is an object with the following fields:
+  - `id`: Identifier of the constraint family, such as `format`, `length`, or `forbidden`.
+  - `args`: JSON-serializable parameters for the constraint instance, such as modes and thresholds.
+  - `description`: Natural-language description of the constraint. 
+- `style`: Structured style/persona bundle associated with the session, including:
+  - `uuid`: Stable identifier for the associated persona/style configuration used in the session.
+  - `persona`: Short persona description.
+  - `styles`: List of stylistic descriptors, such as tone or register cues, associated with the persona.
+- `instruction_success`: Boolean flag indicating whether the turn's instruction stack passed the construction and verification pipeline.
+- `topic_success`: Boolean flag indicating whether topic-level requirements were satisfied during construction and verification.
 
 ## Leaderboard
 
